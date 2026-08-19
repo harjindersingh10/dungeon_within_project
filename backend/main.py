@@ -1,6 +1,7 @@
 
 import os, uuid
 from datetime import datetime, timezone
+from urllib.parse import quote_plus
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,7 +20,9 @@ CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5500,http://127.0.0.1
 def make_engine():
     if not all([SERVER, DATABASE, USERNAME, PASSWORD]):
         return None
-    url = f"mssql+pymssql://{USERNAME}:{PASSWORD}@{SERVER}/{DATABASE}"
+    user = quote_plus(USERNAME)
+    pwd = quote_plus(PASSWORD)
+    url = f"mssql+pymssql://{user}:{pwd}@{SERVER}:1433/{DATABASE}?charset=utf8"
     return create_engine(url, pool_pre_ping=True, pool_size=5, max_overflow=10)
 
 engine = make_engine()
