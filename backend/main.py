@@ -21,15 +21,29 @@ CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5500,http://127.0.0.1
 def make_engine():
     if not all([SERVER, DATABASE, USERNAME, PASSWORD]):
         return None
-    odbc = (
-        f"DRIVER={{{DRIVER}}};SERVER=tcp:{SERVER},1433;"
-        f"DATABASE={DATABASE};UID={USERNAME};PWD={PASSWORD};"
-        "Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
-    )
-    return create_engine(
-        "mssql+pyodbc:///?odbc_connect=" + quote_plus(odbc),
-        pool_pre_ping=True, pool_size=5, max_overflow=10
-    )
+    # Try pymssql first (no ODBC driver needed on Linux)
+    try:
+        import pymssql  # noqa
+        url = f"mssql+pymssql://{USERNAME}:{PASSWORD}@{SERVER}/{DATABASE}"
+        e = create_engine(url, pool_pre_ping=True, pool_size=5, max_overflow=10)
+        with e.connect() as c:
+            c.execute(text("SELECT 1"))
+        return e
+    except Exception:
+        pass
+    # Fallback to pyodbc
+    try:
+        odbc = (
+            f"DRIVER={{{DRIVER}}};SERVER=tcp:{SERVER},1433;"
+            f"DATABASE={DATABASE};UID={USERNAME};PWD={PASSWORD};"
+            "Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
+        )
+        return create_engine(
+            "mssql+pyodbc:///?odbc_connect=" + quote_plus(odbc),
+            pool_pre_ping=True, pool_size=5, max_overflow=10
+        )
+    except Exception:
+        return None
 
 engine = make_engine()
 
