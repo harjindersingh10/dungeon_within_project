@@ -16,7 +16,7 @@ DATABASE = os.getenv("AZURE_SQL_DATABASE", "")
 USERNAME = os.getenv("AZURE_SQL_USERNAME", "")
 PASSWORD = os.getenv("AZURE_SQL_PASSWORD", "")
 DRIVER = os.getenv("AZURE_SQL_DRIVER", "ODBC Driver 18 for SQL Server")
-CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5500,http://127.0.0.1:5500").split(",")
+CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5500,http://127.0.0.1:5500,https://dungeon-within-game.web.app,https://dungeon-within-game.firebaseapp.com").split(",")
 
 def make_engine():
     if not all([SERVER, DATABASE, USERNAME, PASSWORD]):
