@@ -55,13 +55,15 @@ def health():
 @app.get("/api/health/db")
 def db_health():
     if engine is None:
-        return {"status": "not_configured", "message": "Azure SQL credentials are not configured."}
+        return {"status": "not_configured", "message": "Azure SQL credentials are not configured.",
+                "server": SERVER or "MISSING", "database": DATABASE or "MISSING",
+                "username": USERNAME or "MISSING", "password_set": bool(PASSWORD)}
     try:
         with engine.connect() as c:
             c.execute(text("SELECT 1"))
         return {"status": "ok", "database": "azure-sql"}
-    except Exception:
-        return {"status": "error", "message": "The dungeon spirits are currently confused."}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
 
 @app.post("/api/customers", status_code=201)
 def create_customer(payload: CustomerCreate):
