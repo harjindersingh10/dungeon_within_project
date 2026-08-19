@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Your Legend | The Dungeon Within</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body class="profile-page">
+
+  <!-- Ambient background layers -->
+  <div class="prof-bg-glow prof-glow-a"></div>
+  <div class="prof-bg-glow prof-glow-b"></div>
+  <div class="prof-bg-glow prof-glow-c"></div>
+  <div class="prof-particles" aria-hidden="true"></div>
+  <div class="prof-runes" aria-hidden="true">ᚠ　ᛃ　ᛉ　ᚨ　ᛟ　ᚱ　ᛏ</div>
+
+  <header class="game-header">
+    <a class="brand" href="index.html"><span>ᚦ</span> THE DUNGEON WITHIN</a>
+    <div class="header-chapter">PROLOGUE <em>◆</em></div>
+  </header>
+
+  <main class="prof-shell">
+
+    <!-- Left: intro -->
+    <section class="prof-intro prof-reveal">
+      <div class="prof-seal">ᚦ</div>
+      <p class="eyebrow">THE DUNGEON DOESN'T NEED YOUR REAL IDENTITY</p>
+      <h2>Forge Your<br><span>Legend.</span></h2>
+      <p class="prof-intro-body">Leave your ordinary self at the gate.<br>The dungeon only remembers the choices you make inside.</p>
+      <div class="prof-lore-pills">
+        <span>⚔ 10 TRIALS</span>
+        <span>◈ 5 FATES</span>
+        <span>✦ 1 TRUTH</span>
+      </div>
+    </section>
+
+    <!-- Right: form -->
+    <form class="prof-form prof-reveal prof-delay-1" id="profileForm" novalidate>
+
+      <div class="prof-form-header">
+        <span class="prof-form-rune">✦</span>
+        <p class="prof-form-title">CREATE YOUR LEGEND</p>
+        <span class="prof-form-rune">✦</span>
+      </div>
+
+      <!-- Fantasy Name -->
+      <div class="prof-field prof-delay-2">
+        <label class="prof-label" for="fantasyName">FANTASY NAME <span class="req">*</span></label>
+        <div class="prof-input-wrap">
+          <input class="prof-input" id="fantasyName" name="fantasyName"
+                 maxlength="24" autocomplete="off" placeholder="ShadowFox" required>
+          <span class="prof-input-line"></span>
+        </div>
+        <small class="prof-hint">The dungeon prefers legends over real names.</small>
+      </div>
+
+      <!-- Age Group -->
+      <div class="prof-field prof-delay-3">
+        <label class="prof-label">AGE GROUP <span class="req">*</span></label>
+        <div class="prof-chips" id="ageGroup">
+          <button type="button" data-value="Under 18">Under 18</button>
+          <button type="button" data-value="18–24">18–24</button>
+          <button type="button" data-value="25–34">25–34</button>
+          <button type="button" data-value="35–44">35–44</button>
+          <button type="button" data-value="45+">45+</button>
+          <button type="button" data-value="Prefer not to say">Prefer not to say</button>
+        </div>
+      </div>
+
+      <!-- Adventure Style -->
+      <div class="prof-field prof-delay-4">
+        <label class="prof-label">ADVENTURE STYLE <span class="req">*</span></label>
+        <div class="prof-cards" id="adventureStyle">
+          <button type="button" data-value="Action"><i>⚔</i><span>Action</span></button>
+          <button type="button" data-value="Mystery"><i>◈</i><span>Mystery</span></button>
+          <button type="button" data-value="Comedy"><i>☻</i><span>Comedy</span></button>
+          <button type="button" data-value="Exploration"><i>⌖</i><span>Exploration</span></button>
+          <button type="button" data-value="Magic"><i>✧</i><span>Magic</span></button>
+          <button type="button" data-value="Strategy"><i>♟</i><span>Strategy</span></button>
+        </div>
+      </div>
+
+      <!-- Self Description -->
+      <div class="prof-field prof-delay-5">
+        <label class="prof-label">HOW WOULD YOU DESCRIBE YOURSELF? <span class="req">*</span></label>
+        <div class="prof-chips" id="selfDescription">
+          <button type="button" data-value="Calm">Calm</button>
+          <button type="button" data-value="Curious">Curious</button>
+          <button type="button" data-value="Competitive">Competitive</button>
+          <button type="button" data-value="Creative">Creative</button>
+          <button type="button" data-value="Strategic">Strategic</button>
+          <button type="button" data-value="Unpredictable">Unpredictable</button>
+          <button type="button" data-value="I have no idea">I have no idea</button>
+        </div>
+      </div>
+
+      <p class="prof-error" id="formError"></p>
+
+      <button class="prof-submit" type="submit">
+        <span class="prof-submit-inner">
+          <span class="prof-submit-text">BEGIN THE TRIAL</span>
+          <span class="prof-submit-arrow">→</span>
+        </span>
+        <span class="prof-submit-shimmer"></span>
+      </button>
+
+    </form>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/profile.js"></script>
+  <script>AUDIO.init();</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Fate | The Dungeon Within</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="result-page">
+  <div class="result-stars" aria-hidden="true"></div>
+  <main class="result-shell">
+    <section class="analysis-screen" id="analysisScreen">
+      <p class="eyebrow">THE TRIAL IS COMPLETE</p>
+      <h1>ANALYZING<br><span>YOUR CHOICES...</span></h1>
+      <div class="analysis-ring"><div>✦</div></div>
+      <p id="analysisLine">Reading the echoes left behind.</p>
+    </section>
+
+    <section class="reveal-screen hidden" id="revealScreen">
+      <p class="eyebrow">THE DUNGEON HAS DECIDED</p>
+      <h1 class="reveal-title">YOU ARE...</h1>
+
+      <div class="character-poster">
+        <div class="poster-glow"></div>
+        <div class="character-art" id="characterArt"></div>
+        <div class="poster-copy">
+          <p class="species" id="characterSpecies"></p>
+          <h2 id="characterName"></h2>
+          <p class="character-title" id="characterTitle"></p>
+          <p class="character-quote" id="characterDescription"></p>
+        </div>
+      </div>
+
+      <div class="result-details">
+        <div class="detail-panel">
+          <p class="panel-label">YOUR NATURE</p>
+          <div class="stat-list" id="stats"></div>
+        </div>
+        <div class="detail-panel lore-panel">
+          <p class="panel-label">THE CHRONICLE</p>
+          <div class="lore-row"><span>STRENGTH</span><strong id="strength"></strong></div>
+          <div class="lore-row"><span>WEAKNESS</span><strong id="weakness"></strong></div>
+          <div class="lore-row"><span>SPECIAL ABILITY</span><strong id="ability"></strong></div>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <div class="card-art" id="cardArt"></div>
+        <div class="card-content">
+          <p class="eyebrow">DUNGEON CHARACTER CARD</p>
+          <h2 id="cardName"></h2>
+          <p id="cardSubtitle"></p>
+          <div class="card-stats" id="cardStats"></div>
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button class="primary-btn" id="playAgain">ENTER AGAIN</button>
+        <a class="ghost-btn" href="index.html">RETURN TO GATE</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/result.js"></script>
+  <script>AUDIO.init();</script>
+</body>
+</html>

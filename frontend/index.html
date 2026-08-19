@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090d">
+  <title>The Dungeon Within</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="entrance-page">
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <div class="rune-field" aria-hidden="true">ᛟ　ᚱ　ᛉ　ᚨ　ᛏ　ᛒ　ᚲ</div>
+
+  <main class="entrance">
+    <div class="crest">
+      <span class="crest-rune">ᚦ</span>
+    </div>
+    <p class="eyebrow">A CHRONICLE OF CHOICES</p>
+    <h1>THE DUNGEON <span>WITHIN</span></h1>
+    <div class="title-rule"><i></i><b>✦</b><i></i></div>
+    <p class="tagline">Every choice reveals something.</p>
+    <button class="primary-btn enter-btn" id="enterDungeon">
+      <span>⚔</span> ENTER THE DUNGEON
+    </button>
+    <p class="small-note">No real identity required. Only your legend.</p>
+  </main>
+
+  <div class="corner-mark corner-tl"></div>
+  <div class="corner-mark corner-br"></div>
+
+  <script>
+    document.getElementById("enterDungeon").addEventListener("click", () => {
+      document.body.classList.add("page-exit");
+      setTimeout(() => location.href = "profile.html", 650);
+    });
+  </script>
+</body>
+</html>

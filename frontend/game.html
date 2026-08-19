@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Trial | The Dungeon Within</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="game-page">
+  <div class="dungeon-vignette"></div>
+  <div class="floating-runes" aria-hidden="true">ᚠ　ᛃ　　 ᛉ　　 ᚨ　　ᛟ</div>
+
+  <header class="game-header">
+    <a class="brand" href="index.html"><span>ᚦ</span> THE DUNGEON WITHIN</a>
+    <div class="player-chip"><span class="status-dot"></span><span id="playerName">LEGEND</span></div>
+    <button class="icon-btn" id="musicToggle" title="Toggle ambient audio">♫</button>
+  </header>
+
+  <main class="game-shell">
+    <div class="chapter-row">
+      <div>
+        <p class="eyebrow" id="chapterLabel">CHAPTER I</p>
+        <h2 id="scenarioTitle">THE FIRST TRIAL</h2>
+      </div>
+      <div class="progress-copy"><span id="questionNumber">01</span> / 10</div>
+    </div>
+
+    <div class="progress-track"><span id="progressBar"></span></div>
+
+    <section class="scenario-stage">
+      <div class="scenario-atmosphere" id="scenarioAtmosphere"></div>
+      <div class="scenario-seal">✦</div>
+      <p class="scenario-kicker" id="scenarioKicker">THE DUNGEON SPEAKS</p>
+      <h1 id="scenarioText">Loading the trial...</h1>
+      <p class="scenario-hint" id="scenarioHint"></p>
+    </section>
+
+    <section class="answers" id="answers" aria-label="Answer choices"></section>
+
+    <div class="game-footer">
+      <span><i></i> YOUR CHOICE IS PERMANENT</span>
+      <span id="saveState">TRIAL READY</span>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/game.js"></script>
+  <script>AUDIO.init();</script>
+</body>
+</html>
