@@ -1,7 +1,6 @@
 
 import os, uuid
 from datetime import datetime, timezone
-from urllib.parse import quote_plus
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -15,35 +14,13 @@ SERVER = os.getenv("AZURE_SQL_SERVER", "")
 DATABASE = os.getenv("AZURE_SQL_DATABASE", "")
 USERNAME = os.getenv("AZURE_SQL_USERNAME", "")
 PASSWORD = os.getenv("AZURE_SQL_PASSWORD", "")
-DRIVER = os.getenv("AZURE_SQL_DRIVER", "ODBC Driver 18 for SQL Server")
 CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5500,http://127.0.0.1:5500,https://dungeon-within-game.web.app,https://dungeon-within-game.firebaseapp.com").split(",")
 
 def make_engine():
     if not all([SERVER, DATABASE, USERNAME, PASSWORD]):
         return None
-    # Try pymssql first (no ODBC driver needed on Linux)
-    try:
-        import pymssql  # noqa
-        url = f"mssql+pymssql://{USERNAME}:{PASSWORD}@{SERVER}/{DATABASE}"
-        e = create_engine(url, pool_pre_ping=True, pool_size=5, max_overflow=10)
-        with e.connect() as c:
-            c.execute(text("SELECT 1"))
-        return e
-    except Exception:
-        pass
-    # Fallback to pyodbc
-    try:
-        odbc = (
-            f"DRIVER={{{DRIVER}}};SERVER=tcp:{SERVER},1433;"
-            f"DATABASE={DATABASE};UID={USERNAME};PWD={PASSWORD};"
-            "Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
-        )
-        return create_engine(
-            "mssql+pyodbc:///?odbc_connect=" + quote_plus(odbc),
-            pool_pre_ping=True, pool_size=5, max_overflow=10
-        )
-    except Exception:
-        return None
+    url = f"mssql+pymssql://{USERNAME}:{PASSWORD}@{SERVER}/{DATABASE}"
+    return create_engine(url, pool_pre_ping=True, pool_size=5, max_overflow=10)
 
 engine = make_engine()
 
